@@ -19,18 +19,24 @@ void timed_event(std::string const& description, Functor functor, Args&&... args
 	std::cout << std::endl;
 }
 
-int main() 
+int main(int argc, char const* argv[])
 {
-	psi::repacker_troy repack;
+	if (argc != 3)
+	{
+		std::cout << "Invalid parameter(s). Usage is: PsiRepacker <input path> <output path>" << std::endl;
+		return 1;
+	}
+	else
+	{
+		psi::repacker_troy repack;
 
-	std::string filename = "C:\\Users\\VCA\\Desktop\\pwned-passwords.txt";
-	std::string repacked = "C:\\Users\\VCA\\Desktop\\pwned-passwords.bin";
+		std::string filename = argv[1];
+		std::string repacked = argv[2];
 
-	timed_event("loading " + filename, std::bind(&psi::repacker_troy::load, &repack, std::placeholders::_1, std::placeholders::_2), filename, "([A-Za-z0-9]+):[0-9]+");
-	timed_event("sorting " + filename, std::bind(&psi::repacker_troy::sort, &repack));
-	timed_event("saveing " + repacked, std::bind(&psi::repacker_troy::save, &repack, std::placeholders::_1), repacked);
+		timed_event("loading " + filename, std::bind(&psi::repacker_troy::load, &repack, std::placeholders::_1, std::placeholders::_2), filename, "([A-Za-z0-9]+):[0-9]+");
+		timed_event("sorting " + filename, std::bind(&psi::repacker_troy::sort, &repack));
+		timed_event("saveing " + repacked, std::bind(&psi::repacker_troy::save, &repack, std::placeholders::_1), repacked);
 
-	std::cin.ignore();
-	std::cin.get();
-	return 0;
+		return 0;
+	}
 }
