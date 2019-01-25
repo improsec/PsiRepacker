@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{bd530c23-8d5b-4765-b4fd-62f27b922517}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="repackers">
+      <UniqueIdentifier>{dcb6df23-c1b2-4cce-93a9-24e2a0c6ba2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="repackers\generic">
+      <UniqueIdentifier>{08c0b6ee-2710-4c11-af8b-97d751ac6200}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="repackers\troy">
+      <UniqueIdentifier>{7d33f7b5-beec-4268-a2a8-aa21cb0bda9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="repackers\base">
+      <UniqueIdentifier>{5c386a2b-e5d6-424a-bcfb-5232e71de7b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utility">
+      <UniqueIdentifier>{44963fe7-c6a4-4617-a78e-b3cf645345b4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="repacker_troy.cpp">
+      <Filter>repackers\troy</Filter>
+    </ClCompile>
+    <ClCompile Include="repacker_generic.cpp">
+      <Filter>repackers\generic</Filter>
+    </ClCompile>
+    <ClCompile Include="utility.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="repacker_troy.hpp">
+      <Filter>repackers\troy</Filter>
+    </ClInclude>
+    <ClInclude Include="repacker_base.hpp">
+      <Filter>repackers\base</Filter>
+    </ClInclude>
+    <ClInclude Include="repacker_generic.hpp">
+      <Filter>repackers\generic</Filter>
+    </ClInclude>
+    <ClInclude Include="utility.hpp">
+      <Filter>utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
