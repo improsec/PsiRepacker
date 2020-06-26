@@ -8,8 +8,7 @@ namespace psi {
 
 repacker_troy::repacker_troy()
 {
-	//entries_.reserve(517238892);	// Troy Hunt v3
-	entries_.reserve(551509767);	// Troy Hunt v4
+	entries_.reserve(1000000000);
 }
 
 bool repacker_troy::load(std::string const& filename, std::string const& pattern)
@@ -29,6 +28,16 @@ bool repacker_troy::load(std::string const& filename, std::string const& pattern
 		std::vector<char> clrf = { '\r', '\n' };
 
 		std::pair<std::array<char, cache_size>, DWORD> temp;
+		
+		if (!ReadFile(hFile, &temp.first[0], static_cast<DWORD>(temp.first.size()), &temp.second, NULL) || temp.second < 32 || temp.first[32] != ':')
+		{
+			std::cout << "The data file was not recognized as a Troy Hunt NTLM hash list." << std::endl;
+			std::cout << "Please ensure the following format: [32-character NTLM hash]:[count]" << std::endl;
+			CloseHandle(hFile);
+			return false;
+		}
+
+		SetFilePointer(hFile, 0, NULL, FILE_BEGIN);
 
 		while (ReadFile(hFile, &temp.first[0], static_cast<DWORD>(temp.first.size()), &temp.second, NULL))
 		{
